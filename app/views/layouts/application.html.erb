@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>Bookers</title>
+    <div>
+      <ul>
+        <% if user_signed_in? %>
+        <li><%= link_to "Home", user_path(current_user.id) %></li>
+        <li>users</li>
+        <li><%=link_to "Books", book_index_path %></li>
+        <li><%=link_to "logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li>home</li>
+        <li>about</li>
+        <li><%= link_to "sign up", new_user_registration_path %></li>
+        <li><%= link_to "login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
   </head>
-
   <body>
     <%= yield %>
   </body>
