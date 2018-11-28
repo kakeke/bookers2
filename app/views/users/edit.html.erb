@@ -2,17 +2,14 @@
 <%= form_for(@user) do |f| %>
     <div>
         <label>Name</label>
-        <%= f.text_field :username %>
+        <%= f.text_field :username, class: "name" %>
         <span></span>
     </div>  
     <div>
-    	<div>
-        <%= attachment_image_tag @user, :profile_image %>
-        </div>
         <label>Image</label>
-    <%= f.attachment_field :profile_image %>
+    <%= f.attachment_field :profile_image, class: "user_image" %>
         <label>Introduction</label>
-        <%= f.text_field :introduction %>
+        <%= f.text_field :introduction, class: "introduction" %>
     </div>                                                                      
     <%= f.submit "Update User" %>
 <% end %>

@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers</title>
-    <div>
-      <ul>
-        <% if user_signed_in? %>
-        <li><%= link_to "Home", user_path(current_user.id) %></li>
-        <li>users</li>
-        <li><%=link_to "Books", book_index_path %></li>
-        <li><%=link_to "logout", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-        <li>home</li>
-        <li>about</li>
-        <li><%= link_to "sign up", new_user_registration_path %></li>
-        <li><%= link_to "login", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div class= "header">
+    <div class="container" >
+      <div class="row">
+        <div class="col-lg-2" >
+    <span style="color: white">Bookers</span>
+        </div>
+        <div class="col-lg-6"></div>
+        <div class="col-lg-4">
+      <ul>
+        <% if user_signed_in? %>
+        <li class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to "Home", user_path(current_user.id), class: "user_#{current_user.id}" %></li>
+        <li class="glyphicon glyphicon-user" aria-hidden="true"><%=link_to "Users", roots_path, class: "users" %></li>
+        <li class="glyphicon glyphicon-book" aria-hidden="true"><%=link_to "Books", books_path, class: "books" %></li>
+        <li class="glyphicon glyphicon-log-out" aria-hidden="true"><%=link_to "logout", destroy_user_session_path, class: "logout" %></li>
+        <% else %>
+        <li class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to "Home", "/", class: "home" %></li>
+        <li class="glyphicon glyphicon-link" aria-hidden="true"><%= link_to "about", abouts_path, class: "about" %></li>
+        <li class="glyphicon glyphicon-edit" aria-hidden="true"><%= link_to "sign up", new_user_registration_path, class: "sign_up" %></li>
+        <li class="glyphicon glyphicon-log-in" aria-hidden="true"><%= link_to "login", new_user_session_path, class: "sign_in" %></li>
+        <% end %>
+      </ul>
+        </div>
+      </div>
+    </div>
+    </div>
     <%= yield %>
   </body>
+<footer>
+  <div class="container">
+    <div class="row">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-3">CopyRight Infratop.inc</div>
+  </div>
+</footer>
 </html>
