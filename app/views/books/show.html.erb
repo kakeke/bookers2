@@ -37,7 +37,7 @@
     	<td><%= @books.opinion %></td>
         <% if @books.user == current_user %>
         <td><%= link_to "Edit", edit_book_path(@books), class: "btn btn-success edit_book_#{@books.id}" %></td>
-    	<td><%= link_to "Destroy", book_path(@books), class: "btn btn-danger destroy_book_#{@books.id}", :confirm => "本当に削除しますか？", :method => :delete %></td>
+    	<td><%= link_to "Destroy", book_path(@books), class: "btn btn-danger destroy_book_#{@books.id}",method: :delete, data: { confirm: '削除しますか？' } %></td>
         <% end %>
     </tr>
 </table>
