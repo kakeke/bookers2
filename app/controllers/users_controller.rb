@@ -15,7 +15,8 @@ before_action :authenticate_user!
   end
 
   def index
-  	@user = User.find(params[:id])
+    @book = Book.new
+    @users = User.all
   end
 
   def update
